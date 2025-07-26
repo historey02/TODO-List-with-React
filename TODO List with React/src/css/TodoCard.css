@@ -8,10 +8,15 @@
     padding: 15px;
     box-sizing: border-box;
     justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.delete-button,
+.status-button {
+    max-width: 40px;
+    max-height: 40px;
 }
 
 .delete-button {
-    max-width: 40px;
-    max-height: 40px;
     background-color: rgb(244, 138, 130);
 }

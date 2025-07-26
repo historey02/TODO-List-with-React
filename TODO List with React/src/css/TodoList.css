@@ -7,11 +7,26 @@
     box-sizing: border-box;
     border: 2px solid black;
     border-radius: 15px;
-    padding: 15px;
+    padding: 0px 15px 15px 15px;
+}
+
+.nav-bar {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.nav-bar>button {
+    font-size: 1.4em;
+    border-radius: 10px;
 }
 
 input,
-button {
+.add-button {
     margin-top: 10px;
     border-radius: 10px;
     font-size: 1.2em;
@@ -21,7 +36,6 @@ input {
     width: 100%;
 }
 
-button {
+.add-button {
     width: 20%;
-
 }
