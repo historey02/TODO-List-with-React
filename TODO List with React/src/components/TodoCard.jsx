@@ -4,10 +4,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faCheck} from '@fortawesome/free-solid-svg-icons'
+import {useState} from 'react'
 
 
 function TodoCard({todo, className}){
-    const {completed, addTodo, removeTodo, addCompleted, removeCompleted} = useTodoContext();
+    const {completed, addTodo, removeTodo, addCompleted, removeCompleted, updateTodo} = useTodoContext();
+    const[isEditing, setIsEditing] = useState(false);
+    const [editValue, setEditValue] = useState(todo.todo);
+
+    function handleEditSubmit(){
+        if(editValue.trim() !== ""){
+            updateTodo(todo.id, editValue.trim());
+            setIsEditing(false);
+        }
+    }
 
     function onDeleteClick(e){
         e.preventDefault();
@@ -36,7 +46,26 @@ function TodoCard({todo, className}){
             <button className="status-button" onClick={(handleStatusClick)}>
                 <FontAwesomeIcon className="check-icon" icon={faCheck}/>
             </button>
-            <h2 className="todo-name">{todo.todo}</h2>
+
+            {isEditing ? (
+                <input 
+                    type="text"
+                    value={editValue}
+                    onChange={(e) => setEditValue(e.target.value)}
+                    onKeyDown={(e) =>{
+                        if(e.key === "Enter"){
+                            handleEditSubmit();
+                        }
+                    }}
+                    onBlur={handleEditSubmit}
+                    autoFocus
+                    />) : (
+                        <h2 
+                            className="todo-name"
+                            onClick={() => setIsEditing(true)}
+                            title="Click to edit">{todo.todo}</h2>
+                    )
+            }
             <button className="delete-button" onClick={(onDeleteClick)}>
                 <FontAwesomeIcon className="trash-icon" icon={faTrashCan}/>
             </button>

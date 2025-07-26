@@ -52,6 +52,15 @@ export const TodoProvider =({children}) => {
         setSelected(update);
     }
 
+    function updateTodo(id, newValue){
+        setTodos(prev => prev.map(todo =>{
+            return todo.id === id ? {...todo, todo: newValue} : todo
+        }));
+        setCompleted(prev => prev.map(todo =>{
+            return todo.id === id ? {...todo, todo: newValue} : todo
+        }));
+    }
+
     const value = {
         todos,
         completed,
@@ -60,7 +69,8 @@ export const TodoProvider =({children}) => {
         addTodo,
         removeTodo,
         addCompleted,
-        removeCompleted
+        removeCompleted,
+        updateTodo
     }
 
     return (
