@@ -1,8 +1,8 @@
 * {
-    --todo-card-color: rgb(227, 122, 122);
-    --completed-card-color: rgb(73, 200, 73);
-    --delete-button-color: rgb(244, 138, 130);
-    --status-button-color: rgb(73, 154, 177);
+    --todo-card-color: rgb(240, 183, 183);
+    --completed-card-color: rgb(173, 234, 173);
+    --delete-button-color: rgba(230, 71, 59, 0.671);
+    --status-button-color: rgb(140, 212, 231);
 }
 
 .todo-card {
