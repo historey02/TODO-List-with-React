@@ -3,6 +3,7 @@
     --completed-card-color: rgb(173, 234, 173);
     --delete-button-color: rgba(230, 71, 59, 0.671);
     --status-button-color: rgb(140, 212, 231);
+    --edit-input-color: rgb(255, 211, 154);
 }
 
 .todo-card {
@@ -55,4 +56,8 @@
 
 .completed {
     background-color: var(--completed-card-color)
+}
+
+input {
+    background-color: var(--edit-input-color)
 }
