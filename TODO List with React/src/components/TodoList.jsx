@@ -5,7 +5,9 @@ import {useTodoContext} from '../contexts/TodoContext'
 
 function TodoList(){
     const {todos, addTodo} = useTodoContext();
+    const {completed} = useTodoContext();
     const [input, setInput] = useState("");
+    const [selected, setSelected] = useState("all")
 
      function onAddTodoClick(e){
         e.preventDefault();
@@ -20,15 +22,36 @@ function TodoList(){
     }
 
 
+    function onAllClick(e){
+        e.preventDefault();
+        setSelected("all");
+    }
+
+    function onTodoClick(e){
+        e.preventDefault();
+        setSelected("todo");
+    }
+
+    function onCompletedClick(e){
+        e.preventDefault();
+        setSelected("completed");
+    }
+
     return(
         <div className="todo-list">
             <div className="nav-bar">
-                <button className="all-button">All</button>
-                <button className="todo-button">Todo</button>
-                <button className="completed-button">Completed</button>
+                <button className="all-button" onClick={(onAllClick)}>All</button>
+                <button className="todo-button" onClick={(onTodoClick)}>Todo</button>
+                <button className="completed-button" onClick={(onCompletedClick)} >Completed</button>
             </div>
-            {todos.map((todo) =>(
+            {(selected === "all" || selected === "todo") &&
+                todos.map((todo) =>(
                 (<TodoCard key={todo.id} todo={todo}/>)
+            ))
+            }
+            {(selected === "all"|| selected === "completed") && 
+            completed.map((completed) =>(
+                (<TodoCard key={completed.id} todo={completed}/>)
             ))}
             <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Enter a TODO"/>
             <button className="add-button" type="button" onClick={(onAddTodoClick)}>Enter</button>

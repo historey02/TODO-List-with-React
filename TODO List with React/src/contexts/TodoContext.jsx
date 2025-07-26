@@ -6,6 +6,7 @@ export const useTodoContext = () => useContext(TodoContext);
 
 export const TodoProvider =({children}) => {
     const [todos, setTodos] = useState([]);
+    const [completed, setCompleted] = useState([]);
 
     useEffect(() =>{
         const storedTodos = localStorage.getItem('todos');
@@ -26,10 +27,21 @@ export const TodoProvider =({children}) => {
         setTodos(prev => prev.filter(todo => todo.id !== todoId));
     }
 
+    function addCompleted(todo){
+        setCompleted(prev => [...prev, todo]);
+    }
+
+    function removeCompleted(todoId){
+        setCompleted(prev => prev.filter(todo => todo.id !== todoId));
+    }
+
     const value = {
         todos,
+        completed,
         addTodo,
-        removeTodo
+        removeTodo,
+        addCompleted,
+        removeCompleted
     }
 
     return (
