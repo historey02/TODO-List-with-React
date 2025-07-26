@@ -6,8 +6,9 @@ import {useTodoContext} from '../contexts/TodoContext'
 function TodoList(){
     const {todos, addTodo} = useTodoContext();
     const {completed} = useTodoContext();
+    const {selected, updateSelected} = useTodoContext();
     const [input, setInput] = useState("");
-    const [selected, setSelected] = useState("all")
+    
 
      function onAddTodoClick(e){
         e.preventDefault();
@@ -24,17 +25,17 @@ function TodoList(){
 
     function onAllClick(e){
         e.preventDefault();
-        setSelected("all");
+        updateSelected("all");
     }
 
     function onTodoClick(e){
         e.preventDefault();
-        setSelected("todo");
+        updateSelected("todo")
     }
 
     function onCompletedClick(e){
         e.preventDefault();
-        setSelected("completed");
+        updateSelected("completed")
     }
 
     return(
