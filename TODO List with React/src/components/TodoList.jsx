@@ -47,14 +47,19 @@ function TodoList(){
             </div>
             {(selected === "all" || selected === "todo") &&
                 todos.map((todo) =>(
-                (<TodoCard key={todo.id} todo={todo}/>)
+                (<TodoCard className="todo" key={todo.id} todo={todo}/>)
             ))
             }
             {(selected === "all"|| selected === "completed") && 
             completed.map((completed) =>(
-                (<TodoCard key={completed.id} todo={completed}/>)
+                (<TodoCard className="completed" key={completed.id} todo={completed}/>)
             ))}
-            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} placeholder="Enter a TODO"/>
+            <input type="text" value={input} onChange={(e) => setInput(e.target.value)} 
+                onKeyDown={(e) => {
+                    if(e.key === "Enter"){
+                        onAddTodoClick(e);
+                    }
+                }} placeholder="Enter a TODO"/>
             <button className="add-button" type="button" onClick={(onAddTodoClick)}>Enter</button>
         </div>
     );

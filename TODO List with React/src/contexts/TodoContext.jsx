@@ -30,14 +30,14 @@ export const TodoProvider =({children}) => {
 
     useEffect(() =>{
         localStorage.setItem('selected', JSON.stringify(selected))
-    })
+    }, [selected])
 
     function addTodo(todo){
         setTodos(prev => [...prev, todo]);
     }
 
     function removeTodo(todoId){
-        setTodos(prev => prev.filter(todo => todo.id !== todoId));
+        setTodos(prev => prev.filter(todo => todo.id !== Number(todoId)));
     }
 
     function addCompleted(todo){
@@ -45,7 +45,7 @@ export const TodoProvider =({children}) => {
     }
 
     function removeCompleted(todoId){
-        setCompleted(prev => prev.filter(todo => todo.id !== todoId));
+        setCompleted(prev => prev.filter(todo => todo.id !== Number(todoId)));
     }
 
     function updateSelected(update){

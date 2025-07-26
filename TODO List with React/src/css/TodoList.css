@@ -1,3 +1,10 @@
+* {
+    --all-button-color: rgb(236, 111, 207);
+    --todo-button-color: rgb(227, 122, 122);
+    --completed-button-color: rgb(73, 200, 73);
+    --add-button-color: rgb(129, 240, 246);
+}
+
 .todo-list {
     width: 60vw;
     display: flex;
@@ -7,12 +14,14 @@
     box-sizing: border-box;
     border: 2px solid black;
     border-radius: 15px;
-    padding: 0px 15px 15px 15px;
+    padding: 0px 10px 10px 10px;
 }
 
 .nav-bar {
     width: 100%;
-    border: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
     border-radius: 10px;
     display: flex;
     justify-content: space-around;
@@ -36,6 +45,26 @@ input {
     width: 100%;
 }
 
+button {
+    cursor: pointer;
+}
+
 .add-button {
+    background-color: var(--add-button-color);
     width: 20%;
+}
+
+.all-button {
+    background-color: var(--all-button-color);
+    min-width: 125px;
+}
+
+.todo-button {
+    background-color: var(--todo-button-color);
+    min-width: 125px;
+}
+
+.completed-button {
+    background-color: var(--completed-button-color);
+    min-width: 125px;
 }
